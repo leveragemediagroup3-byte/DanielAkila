@@ -3,6 +3,8 @@ import Hero from './sections/Hero'
 import Mission from './sections/Mission'
 import Expertise from './sections/Expertise'
 import Framework from './sections/Framework'
+import About from './sections/About'
+import Speaking from './sections/Speaking'
 
 export default function App() {
   return (
@@ -13,6 +15,8 @@ export default function App() {
         <Mission />
         <Expertise />
         <Framework />
+        <About />
+        <Speaking />
       </main>
     </>
   )
