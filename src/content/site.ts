@@ -1,5 +1,4 @@
 // All website copy lives here, so text can be edited without touching the design.
-// Items marked PLACEHOLDER need real information from Daniel's team.
 
 export const site = {
   brand: {
@@ -27,7 +26,7 @@ export const site = {
     secondary: { label: "Explore the work", href: "#expertise" },
   },
 
-   mission: {
+  mission: {
     label: "The Leader's Question",
     intro: "Someone must constantly be asking:",
     questions: ["What is changing?", "What are we missing?", "What lies ahead?"],
@@ -119,7 +118,22 @@ export const site = {
     label: "DANMAC Consulting",
     fullName: "Daniel Akila Mentorship and Consulting",
     heading: "Strategy for organisations ready to move.",
-    text: "DANMAC partners with organisations and leaders to unlock potential through consulting, mentorship and coaching, designed to accelerate leadership excellence and entrepreneurial success.",
+    text: "DANMAC is the consulting arm of Daniel Akila. It is also the platform behind the SLF Conferences and the Mentorship Programs.",
+    arms: [
+      {
+        title: "Consulting & Advisory",
+        text: "Business advisory, organisational strategy, leadership and capacity development for organisations ready to move.",
+      },
+      {
+        title: "SLF Conferences",
+        text: "DANMAC organises the Success, Leadership and Finance Conference, a platform for strategic conversations that began in September 2024.",
+      },
+      {
+        title: "Mentorship Programs",
+        text: "Mentorship for emerging leaders and visionaries, giving them the purpose, tools and mindset to lead boldly and impact generations.",
+      },
+    ],
+    servicesLabel: "What DANMAC does",
     services: [
       "Consulting",
       "Business advisory",
@@ -135,8 +149,9 @@ export const site = {
     label: "SLF Conference",
     title: "SLF",
     subtitle: "Success · Leadership · Finance",
+    since: "Since September 2024",
     heading: "A platform for transgenerational minds.",
-    text: "In a world shaped by uncertainty and rapid change, the ability to integrate success, leadership and finance is no longer a personal ambition. It is a societal imperative. SLF is a strategic movement committed to shaping transgenerational minds and mobilising transformative agency.",
+    text: "In a world shaped by uncertainty and rapid change, the ability to integrate success, leadership and finance is no longer a personal ambition. It is a societal imperative. SLF, organised by DANMAC, is a strategic movement committed to shaping transgenerational minds and mobilising transformative agency.",
     focus: [
       "Leadership",
       "Business",
@@ -145,7 +160,14 @@ export const site = {
       "Strategic conversations",
       "High-level networking",
     ],
-    nextEdition: "Dates, venue and registration: PLACEHOLDER, add when confirmed.",
+    editionsLabel: "The editions",
+    editions: [
+      { year: "2024", title: "Raising the Bar, Going Exponential", parts: [] as string[] },
+      { year: "2025", title: "Disruption", parts: ["People", "Culture", "Money"] },
+      { year: "2026", title: "Disruptors", parts: ["Personal", "Institutional", "National"] },
+    ],
+    galleryLabel: "Gallery",
+    galleryHeading: "Moments from the room.",
     cta: { label: "Explore SLF", href: "/slf" },
   },
 

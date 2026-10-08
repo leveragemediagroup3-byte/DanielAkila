@@ -5,6 +5,8 @@ import Expertise from './sections/Expertise'
 import Framework from './sections/Framework'
 import About from './sections/About'
 import Speaking from './sections/Speaking'
+import Danmac from './sections/Danmac'
+import Slf from './sections/Slf'
 
 export default function App() {
   return (
@@ -17,6 +19,8 @@ export default function App() {
         <Framework />
         <About />
         <Speaking />
+        <Danmac />
+        <Slf />
       </main>
     </>
   )
