@@ -5,22 +5,24 @@ const found = import.meta.glob('../assets/slf-logo.{png,svg,webp,jpg,jpeg,PNG,SV
   import: 'default',
 }) as Record<string, string>
 
-const logo = Object.values(found)[0]
+export const slfLogo: string | undefined = Object.values(found)[0]
 
 // Set to true if the logo is a dark single-colour mark that disappears on the navy background.
-// It turns the whole logo white.
+// It turns the whole logo white everywhere it is used.
 const MAKE_WHITE = false
 
+export const slfLogoFilter = MAKE_WHITE ? 'brightness-0 invert' : ''
+
 export default function SlfMark({ title }: { title: string }) {
-  if (!logo) {
+  if (!slfLogo) {
     return <p className="mt-6 font-display text-8xl leading-none md:text-[9rem]">{title}</p>
   }
 
   return (
     <img
-      src={logo}
+      src={slfLogo}
       alt="SLF Conference"
-      className={`mt-6 h-auto max-h-40 w-auto max-w-full md:max-h-56 ${MAKE_WHITE ? 'brightness-0 invert' : ''}`}
+      className={`mt-6 h-auto max-h-40 w-auto max-w-full md:max-h-56 ${slfLogoFilter}`}
     />
   )
 }

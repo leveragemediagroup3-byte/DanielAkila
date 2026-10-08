@@ -6,7 +6,7 @@ import SlfGallery from '../components/SlfGallery'
 import SlfMark from '../components/SlfMark'
 import { site } from '../content/site'
 
-export default function Slf() {
+export default function Slf({ showMark = true }: { showMark?: boolean }) {
   const { slf } = site
 
   return (
@@ -23,7 +23,7 @@ export default function Slf() {
           <div className="md:col-span-5">
             <Reveal>
               <SectionLabel tone="electric">{slf.label}</SectionLabel>
-              <SlfMark title={slf.title} />
+              {showMark && <SlfMark title={slf.title} />}
               <p className="mt-4 text-xs font-bold uppercase tracking-[0.22em] text-electric md:text-sm">
                 {slf.subtitle}
               </p>
