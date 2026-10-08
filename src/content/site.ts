@@ -27,10 +27,12 @@ export const site = {
     secondary: { label: "Explore the work", href: "#expertise" },
   },
 
-  mission: {
-    label: "The Premise",
-    lineOne: "Leadership is not simply about success.",
-    lineTwo: "It is about building something that outlives you.",
+   mission: {
+    label: "The Leader's Question",
+    intro: "Someone must constantly be asking:",
+    questions: ["What is changing?", "What are we missing?", "What lies ahead?"],
+    closingLead: "That someone is",
+    closingHighlight: "you.",
   },
 
   expertise: {
