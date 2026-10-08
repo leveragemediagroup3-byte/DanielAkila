@@ -28,9 +28,9 @@ const found = Object.entries(modules)
 const fallback = [portrait, aboutImg, speakingImg, leadershipImg].map((src) => ({ src, caption: '' }))
 const photos = found.length > 0 ? found : fallback
 
-const widths = ['w-[68vw] md:w-[26vw]', 'w-[82vw] md:w-[40vw]', 'w-[60vw] md:w-[24vw]']
-const aspects = ['aspect-[4/5]', 'aspect-[3/2]', 'aspect-square']
-const offsets = ['md:-translate-y-4', 'md:translate-y-10', 'md:-translate-y-8']
+// Width-to-height ratios: portrait, landscape, square (repeating)
+const ratios = [0.8, 1.5, 1]
+const offsets = ['md:-translate-y-2', 'md:translate-y-5', 'md:-translate-y-4']
 
 export default function PhotoStrip() {
   const { gallery } = site
@@ -55,15 +55,20 @@ export default function PhotoStrip() {
   }, [])
 
   const header = (
-    <>
+    <div className="max-w-xl">
       <SectionLabel tone="electric">{gallery.label}</SectionLabel>
-      <h2 className="mt-5 max-w-3xl font-display text-4xl leading-tight md:text-6xl">{gallery.heading}</h2>
-    </>
+      <h2 className="mt-4 font-display text-2xl leading-tight md:text-4xl">{gallery.heading}</h2>
+    </div>
   )
 
   const items = photos.map((p, i) => (
-    <figure key={p.src} data-cursor="" className={`shrink-0 ${widths[i % 3]} ${offsets[i % 3]}`}>
-      <div className={`group relative w-full overflow-hidden bg-white/5 ${aspects[i % 3]}`}>
+    <figure
+      key={p.src}
+      data-cursor=""
+      className={`shrink-0 ${offsets[i % 3]}`}
+      style={{ width: `calc(var(--h) * ${ratios[i % 3]})` }}
+    >
+      <div className="group relative w-full overflow-hidden bg-white/5" style={{ height: 'var(--h)' }}>
         <img
           src={p.src}
           alt={p.caption || 'Daniel Akila'}
@@ -82,9 +87,11 @@ export default function PhotoStrip() {
   // Reduced motion: an ordinary swipeable row
   if (reduce) {
     return (
-      <section className="bg-ink py-24 text-white">
+      <section className="bg-ink py-20 text-white">
         <div className="mx-auto max-w-[1240px] px-6 md:px-10">{header}</div>
-        <div className="mt-12 flex gap-5 overflow-x-auto px-6 pb-6 md:px-10">{items}</div>
+        <div className="mt-10 flex gap-5 overflow-x-auto px-6 pb-6 [--h:36vh] md:px-10 md:[--h:46vh]">
+          {items}
+        </div>
       </section>
     )
   }
@@ -95,18 +102,18 @@ export default function PhotoStrip() {
       className="relative bg-ink text-white"
       style={{ height: `calc(100vh + ${distance}px)` }}
     >
-      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
+      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden pb-6 pt-24">
         <div className="mx-auto w-full max-w-[1240px] px-6 md:px-10">{header}</div>
 
         <motion.div
           ref={track}
           style={{ x }}
-          className="mt-10 flex w-max items-start gap-5 pl-6 pr-[12vw] md:mt-14 md:gap-8 md:pl-[max(2.5rem,calc((100vw-1240px)/2+2.5rem))]"
+          className="mt-8 flex w-max items-start gap-5 pl-6 pr-[12vw] [--h:36vh] md:mt-10 md:gap-8 md:pl-[max(2.5rem,calc((100vw-1240px)/2+2.5rem))] md:[--h:46vh]"
         >
           {items}
         </motion.div>
 
-        <div className="mx-auto mt-12 flex w-full max-w-[1240px] items-center gap-5 px-6 md:px-10">
+        <div className="mx-auto mt-8 flex w-full max-w-[1240px] items-center gap-5 px-6 md:mt-10 md:px-10">
           <span className="text-xs font-bold tracking-[0.2em] text-white/60">
             <motion.span>{current}</motion.span> / {String(photos.length).padStart(2, '0')}
           </span>
