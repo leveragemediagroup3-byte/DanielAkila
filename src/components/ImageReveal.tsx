@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useInView, useReducedMotion } from 'framer-motion'
 
 type Props = {
   src: string
@@ -8,26 +9,29 @@ type Props = {
 }
 
 export default function ImageReveal({ src, alt, className = '', position = 'object-top' }: Props) {
+  const ref = useRef<HTMLDivElement>(null)
+  const inView = useInView(ref, { once: true, margin: '0px 0px -80px 0px' })
   const reduce = useReducedMotion()
-  const viewport = { once: true, margin: '-80px' }
+  const show = inView || !!reduce
 
   return (
-    <motion.div
-      className={`relative overflow-hidden rounded-xl bg-ink ${className}`}
-      initial={{ clipPath: 'inset(100% 0% 0% 0%)' }}
-      whileInView={{ clipPath: 'inset(0% 0% 0% 0%)' }}
-      viewport={viewport}
-      transition={{ duration: reduce ? 0 : 1.1, ease: 'easeInOut' }}
-    >
-      <motion.img
-        src={src}
-        alt={alt}
-        className={`absolute inset-0 h-full w-full object-cover ${position}`}
-        initial={{ scale: 1.12 }}
-        whileInView={{ scale: 1 }}
-        viewport={viewport}
-        transition={{ duration: reduce ? 0 : 1.6, ease: 'easeOut' }}
-      />
-    </motion.div>
+    // The wrapper is never clipped, so the browser can always tell when it is on screen
+    <div ref={ref} className={`relative ${className}`}>
+      <motion.div
+        className="absolute inset-0 overflow-hidden bg-ink"
+        initial={false}
+        animate={{ clipPath: show ? 'inset(0% 0% 0% 0%)' : 'inset(100% 0% 0% 0%)' }}
+        transition={{ duration: reduce ? 0 : 1.1, ease: 'easeInOut' }}
+      >
+        <motion.img
+          src={src}
+          alt={alt}
+          className={`absolute inset-0 h-full w-full object-cover ${position}`}
+          initial={false}
+          animate={{ scale: show ? 1 : 1.12 }}
+          transition={{ duration: reduce ? 0 : 1.6, ease: 'easeOut' }}
+        />
+      </motion.div>
+    </div>
   )
 }

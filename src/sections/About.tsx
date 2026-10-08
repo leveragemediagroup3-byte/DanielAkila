@@ -14,18 +14,12 @@ export default function About() {
       <div className="grid items-center gap-14 md:grid-cols-12 md:gap-16">
         {/* Left: portrait */}
         <div className="md:col-span-5">
-          <div className="relative">
-            <div
-              aria-hidden
-              className="absolute inset-0 translate-x-3 translate-y-3 rounded-xl border border-burgundy/40 md:translate-x-4 md:translate-y-4"
-            />
-            <ImageReveal
-              src={aboutImg}
-              alt="Daniel Akila"
-              className="aspect-[4/5] w-full"
-              position="object-top"
-            />
-          </div>
+          <ImageReveal
+            src={aboutImg}
+            alt="Daniel Akila"
+            className="aspect-[4/5] w-full"
+            position="object-top"
+          />
         </div>
 
         {/* Right: story */}
@@ -33,7 +27,7 @@ export default function About() {
           <Reveal>
             <SectionLabel>{about.label}</SectionLabel>
             <div className="mt-4 h-px w-12 bg-burgundy" />
-            <h2 className="mt-8 font-display text-4xl leading-tight md:text-5xl">
+            <h2 className="mt-8 font-display text-3xl leading-tight md:text-5xl">
               {about.heading}
             </h2>
           </Reveal>
