@@ -1,4 +1,5 @@
 import Navbar from './components/Navbar'
+import BookingModal from './components/BookingModal'
 import Hero from './sections/Hero'
 import Mission from './sections/Mission'
 import Expertise from './sections/Expertise'
@@ -7,6 +8,8 @@ import About from './sections/About'
 import Speaking from './sections/Speaking'
 import Danmac from './sections/Danmac'
 import Slf from './sections/Slf'
+import Insights from './sections/Insights'
+import Contact from './sections/Contact'
 
 export default function App() {
   return (
@@ -21,7 +24,10 @@ export default function App() {
         <Speaking />
         <Danmac />
         <Slf />
+        <Insights />
+        <Contact />
       </main>
+      <BookingModal />
     </>
   )
 }

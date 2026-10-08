@@ -16,13 +16,13 @@ export const site = {
     { label: "Contact", href: "#contact" },
   ],
 
-  cta: { label: "Book Daniel", href: "#contact" },
+  cta: { label: "Book Daniel", href: "#book" },
 
   hero: {
     lineOne: "Helping founders move from",
     lineTwo: "Passion to Profit to Posterity.",
     text: "Daniel Akila is the Founder and CEO of DANMAC Consulting, a serial entrepreneur and keynote speaker. He helps founders and organisations turn vision into sustainable enterprise, and enterprise into legacy.",
-    primary: { label: "Book Daniel", href: "#contact" },
+    primary: { label: "Book Daniel", href: "#book" },
     secondary: { label: "Explore the work", href: "#expertise" },
   },
 
@@ -111,7 +111,7 @@ export const site = {
       "Organisational transformation",
       "Youth and next-generation leadership",
     ],
-    cta: { label: "Invite Daniel to Speak", href: "#contact" },
+    cta: { label: "Invite Daniel to Speak", href: "#book" },
   },
 
   danmac: {
