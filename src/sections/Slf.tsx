@@ -3,6 +3,7 @@ import SectionLabel from '../components/SectionLabel'
 import Reveal from '../components/Reveal'
 import Button from '../components/Button'
 import SlfGallery from '../components/SlfGallery'
+import SlfMark from '../components/SlfMark'
 import { site } from '../content/site'
 
 export default function Slf() {
@@ -22,7 +23,7 @@ export default function Slf() {
           <div className="md:col-span-5">
             <Reveal>
               <SectionLabel tone="electric">{slf.label}</SectionLabel>
-              <p className="mt-6 font-display text-8xl leading-none md:text-[9rem]">{slf.title}</p>
+              <SlfMark title={slf.title} />
               <p className="mt-4 text-xs font-bold uppercase tracking-[0.22em] text-electric md:text-sm">
                 {slf.subtitle}
               </p>
