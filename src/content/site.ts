@@ -7,13 +7,13 @@ export const site = {
     tagline: "…towards an enlightened, empowered and excellent people.",
   },
 
-  nav: [
-    { label: "About", href: "#about" },
-    { label: "Speaking", href: "#speaking" },
-    { label: "DANMAC", href: "#danmac" },
-    { label: "SLF", href: "#slf" },
-    { label: "Insights", href: "#insights" },
-    { label: "Contact", href: "#contact" },
+   nav: [
+    { label: "About", href: "/about" },
+    { label: "Speaking", href: "/speaking" },
+    { label: "DANMAC", href: "/danmac" },
+    { label: "SLF", href: "/slf" },
+    { label: "Insights", href: "/insights" },
+    { label: "Contact", href: "/contact" },
   ],
 
   cta: { label: "Book Daniel", href: "#book" },
@@ -246,7 +246,7 @@ export const site = {
       meta: "Book Daniel Akila for keynotes on leadership, entrepreneurship, business strategy and organisational transformation.",
     },
     danmac: {
-      title: "Strategy for organisations ready to move.",
+      title: "The consulting arm behind the work.",
       intro: "Consulting, mentorship and capacity development from Daniel Akila Mentorship and Consulting.",
       meta: "DANMAC Consulting: business advisory, organisational strategy, leadership and capacity development.",
     },
@@ -256,12 +256,12 @@ export const site = {
       meta: "The SLF Conference: Success, Leadership and Finance, a platform for institutional thinking and strategic conversations.",
     },
     insights: {
-      title: "Thinking worth keeping.",
+      title: "Essays, ideas and perspectives.",
       intro: "Essays and perspectives from Daniel Akila.",
       meta: "Insights from Daniel Akila on leadership, business, finance, strategy and institutional development.",
     },
     contact: {
-      title: "Let's build what matters.",
+      title: "Start a conversation.",
       intro: "Choose the kind of conversation you want to have, then tell us a little about it.",
       meta: "Contact Daniel Akila for speaking, consulting, executive coaching, training and partnerships.",
     },

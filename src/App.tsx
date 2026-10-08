@@ -1,33 +1,29 @@
-import Navbar from './components/Navbar'
-import BookingModal from './components/BookingModal'
-import Hero from './sections/Hero'
-import Mission from './sections/Mission'
-import Expertise from './sections/Expertise'
-import Framework from './sections/Framework'
-import About from './sections/About'
-import Speaking from './sections/Speaking'
-import Danmac from './sections/Danmac'
-import Slf from './sections/Slf'
-import Insights from './sections/Insights'
-import Contact from './sections/Contact'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Layout from './Layout'
+import Home from './pages/Home'
+import AboutPage from './pages/AboutPage'
+import SpeakingPage from './pages/SpeakingPage'
+import DanmacPage from './pages/DanmacPage'
+import SlfPage from './pages/SlfPage'
+import InsightsPage from './pages/InsightsPage'
+import ContactPage from './pages/ContactPage'
+import NotFound from './pages/NotFound'
 
 export default function App() {
   return (
-    <>
-      <Navbar />
-      <main id="top">
-        <Hero />
-        <Mission />
-        <Expertise />
-        <Framework />
-        <About />
-        <Speaking />
-        <Danmac />
-        <Slf />
-        <Insights />
-        <Contact />
-      </main>
-      <BookingModal />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="speaking" element={<SpeakingPage />} />
+          <Route path="danmac" element={<DanmacPage />} />
+          <Route path="slf" element={<SlfPage />} />
+          <Route path="insights" element={<InsightsPage />} />
+          <Route path="contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import logo from '../assets/logo.png'
 import { site } from '../content/site'
@@ -6,6 +7,7 @@ import { site } from '../content/site'
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const { pathname } = useLocation()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -23,16 +25,28 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-[1240px] items-center justify-between px-6 text-white md:px-10">
-        <a href="#top" aria-label="Daniel Akila home">
+        <a href="/" aria-label="Daniel Akila home" onClick={() => setOpen(false)}>
           <img src={logo} alt="Daniel Akila" className="h-9 w-auto md:h-11" />
         </a>
 
         <nav className="hidden items-center gap-9 text-sm font-medium md:flex">
-          {site.nav.map((item) => (
-            <a key={item.href} href={item.href} className="text-white/80 transition-colors hover:text-white">
-              {item.label}
-            </a>
-          ))}
+          {site.nav.map((item) => {
+            const active = pathname === item.href
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                aria-current={active ? 'page' : undefined}
+                className={`border-b pb-1 transition-colors ${
+                  active
+                    ? 'border-electric text-white'
+                    : 'border-transparent text-white/80 hover:text-white'
+                }`}
+              >
+                {item.label}
+              </a>
+            )
+          })}
           <a
             href={site.cta.href}
             className="rounded-lg bg-electric px-5 py-2.5 font-semibold text-white transition-colors hover:bg-[#0f55d6]"
