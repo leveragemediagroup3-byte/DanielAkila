@@ -91,7 +91,7 @@ export default function SlfGallery({ years }: Props) {
       {/* Full-size viewer */}
       {open !== null && photos[open] && (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-ink/95 p-4"
+          data-lenis-prevent className="fixed inset-0 z-[60] flex items-center justify-center bg-ink/95 p-4"
           onClick={() => setOpen(null)}
         >
           <button

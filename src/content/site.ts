@@ -18,6 +18,11 @@ export const site = {
 
   cta: { label: "Book Daniel", href: "#book" },
 
+    gallery: {
+    label: "In Pictures",
+    heading: "Stages, rooms and conversations.",
+  },
+  
   hero: {
     lineOne: "Helping founders move from",
     lineTwo: "Passion to Profit to Posterity.",

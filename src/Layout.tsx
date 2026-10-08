@@ -3,6 +3,8 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import BookingModal from './components/BookingModal'
+import SmoothScroll from './components/SmoothScroll'
+import Cursor from './components/Cursor'
 
 export default function Layout() {
   const navigate = useNavigate()
@@ -37,6 +39,8 @@ export default function Layout() {
 
   return (
     <>
+      <SmoothScroll />
+      <Cursor />
       <Navbar />
       <main id="top">
         <Outlet />

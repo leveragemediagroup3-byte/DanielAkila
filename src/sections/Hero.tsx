@@ -1,68 +1,73 @@
+import { ArrowDown } from 'lucide-react'
 import Button from '../components/Button'
-import Reveal from '../components/Reveal'
-import SectionLabel from '../components/SectionLabel'
+import RevealText from '../components/RevealText'
+import SpotlightImage from '../components/SpotlightImage'
 import { site } from '../content/site'
 import portrait from '../assets/portrait.jpg'
 
 export default function Hero() {
   const { hero, brand } = site
+  // "Passion to Profit to Posterity." becomes three stacked lines
+  const stack = hero.lineTwo.split(/ (?=to )/)
 
   return (
-    <section className="relative overflow-hidden bg-ink text-white">
-      {/* Subtle electric-blue glow behind the portrait */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_75%_50%,rgba(23,105,255,0.22),transparent_55%)]"
-      />
+    <section className="relative flex flex-col overflow-hidden bg-ink text-white md:block md:min-h-screen">
+      {/* Portrait: flush to the right edge on desktop, below the text on mobile */}
+      <div className="order-2 h-[78vh] md:absolute md:inset-y-0 md:right-0 md:h-auto md:w-[46%]">
+        <SpotlightImage
+          src={portrait}
+          alt="Daniel Akila"
+          className="h-full w-full"
+          hint="Move your cursor over the portrait"
+        />
+      </div>
 
-      <div className="relative mx-auto grid min-h-screen max-w-[1240px] px-6 pt-32 md:grid-cols-12 md:items-stretch md:gap-8 md:px-10 md:pt-0">
-        {/* Left: message */}
-        <div className="md:col-span-7 md:py-32">
-          <Reveal>
-            <SectionLabel tone="light">{brand.eyebrow}</SectionLabel>
-          </Reveal>
+      {/* Message */}
+      <div className="relative z-10 order-1 mx-auto flex min-h-[100svh] max-w-[1400px] flex-col justify-end px-6 pb-12 pt-32 md:min-h-screen md:px-10 md:pb-16">
+        <RevealText
+          as="p"
+          delay={0.1}
+          className="text-[11px] font-bold uppercase tracking-[0.28em] text-white/60"
+        >
+          {brand.eyebrow}
+        </RevealText>
 
-          <Reveal delay={0.1}>
-            <h1 className="mt-6 font-display text-[2.75rem] leading-[1.05] sm:text-6xl lg:text-7xl">
-              {hero.lineOne}
-              <span className="block text-electric">{hero.lineTwo}</span>
-            </h1>
-          </Reveal>
+        <RevealText
+          as="p"
+          delay={0.2}
+          className="mt-8 font-display text-xl italic text-white/75 md:text-3xl"
+        >
+          {hero.lineOne}
+        </RevealText>
 
-          <Reveal delay={0.2}>
-            <p className="mt-8 max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
-              {hero.text}
-            </p>
-          </Reveal>
+        <h1 className="mt-3 font-display text-[clamp(2.75rem,8vw,8.5rem)] leading-[0.95]">
+          {stack.map((line, i) => (
+            <RevealText
+              key={line}
+              as="span"
+              delay={0.3 + i * 0.12}
+              className={`block ${i === stack.length - 1 ? 'text-electric' : ''}`}
+            >
+              {line}
+            </RevealText>
+          ))}
+        </h1>
 
-          <Reveal delay={0.3}>
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <Button href={hero.primary.href}>{hero.primary.label}</Button>
-              <Button href={hero.secondary.href} variant="outline">
-                {hero.secondary.label}
-              </Button>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.4}>
-            <p className="mt-14 border-t border-line-dark pt-6 text-xs font-bold uppercase tracking-[0.22em] text-white/50">
-              Passion → Profit → Posterity
-            </p>
-          </Reveal>
-        </div>
-
-        {/* Right: portrait, same height as the text column */}
-        <div className="mt-12 pb-12 md:col-span-5 md:mt-0 md:py-32">
-          <div className="relative h-[480px] overflow-hidden rounded-xl ring-1 ring-white/10 sm:h-[560px] md:h-full">
-            <img
-              src={portrait}
-              alt="Daniel Akila"
-              className="absolute inset-0 h-full w-full object-cover object-top"
-            />
-            {/* Soft shade at the very bottom for depth */}
-            <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-ink/50 to-transparent" />
+        <div className="mt-12 md:max-w-md">
+          <p className="leading-relaxed text-white/70">{hero.text}</p>
+          <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row">
+            <Button href={hero.primary.href}>{hero.primary.label}</Button>
+            <Button href={hero.secondary.href} variant="outline">
+              {hero.secondary.label}
+            </Button>
           </div>
         </div>
+      </div>
+
+      {/* Scroll cue */}
+      <div className="absolute bottom-8 right-10 z-20 hidden items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-white/80 md:flex">
+        Scroll
+        <ArrowDown size={16} className="animate-bounce" />
       </div>
     </section>
   )
